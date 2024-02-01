@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>constants</title>
+  </head>
+  <body>
+    <h1 id="myH1">Enter the radius of a circle:</h1>
+    <label for="myText">radius: </label>
+    <input type="text" name="myText" id="myText" />
+    <button id="mySubmit">submit</button>
+    <br />
+    <h3 id="myH3"></h3>
+
+    <script>
+      const pi = 3.1415926;
+      let radius;
+      let circumference;
+
+      //   pi = 3; // Uncaught TypeError: Assignment to constant variable.
+
+      //   radius = window.prompt("Enter the radius of a cicle");
+      //   radius = Number(radius);
+
+      //   circumference = 2 * pi * radius;
+
+      //   console.log(circumference);
+
+      document.getElementById("mySubmit").onclick = function () {
+        radius = document.getElementById("myText").value;
+        radius = Number(radius);
+        circumference = 2 * pi * radius;
+        document.getElementById("myH3").textContent = circumference + "cm";
+      };
+    </script>
+  </body>
+</html>

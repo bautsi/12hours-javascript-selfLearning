@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>counter program</title>
+    <style>
+      #shownum {
+        text-align: center;
+        font-size: 100px;
+        margin-top: 0;
+        margin: 0px;
+      }
+      #buttons {
+        display: flex;
+        align-self: center;
+        justify-content: center;
+      }
+      button {
+        background-color: skyblue;
+        border-radius: 5px;
+        line-height: 25px;
+        margin: 1.5px;
+        padding: 5px 10px;
+        transition: background-color 0.15s;
+      }
+      button:hover {
+        background-color: cornflowerblue;
+        transform: scale(1.02);
+      }
+      button:active {
+        transform: scale(1);
+      }
+    </style>
+  </head>
+  <body>
+    <h1 id="shownum">0</h1>
+    <div id="buttons">
+      <button id="decrease">decrease</button>
+      <button id="reset">reset</button>
+      <button id="increase">increase</button>
+    </div>
+
+    <script>
+      let shownum = 0;
+      document.getElementById("decrease").onclick = function () {
+        shownum--;
+        document.getElementById("shownum").textContent = shownum;
+        // console.log(shownum);
+      };
+      document.getElementById("increase").onclick = function () {
+        shownum++;
+        document.getElementById("shownum").textContent = shownum;
+        // console.log(shownum);
+      };
+      document.getElementById("reset").onclick = function () {
+        shownum = 0;
+        document.getElementById("shownum").textContent = shownum;
+        // console.log(shownum);
+      };
+    </script>
+  </body>
+</html>

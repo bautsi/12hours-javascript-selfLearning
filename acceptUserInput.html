@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>accept user input</title>
+  </head>
+  <body>
+    <h1 id="name">What's your username?</h1>
+    <div>
+      <label>username: </label><input type="text" id="text" />
+      <button id="submit">submit</button>
+    </div>
+
+    <script>
+      //   let username;
+
+      //   username = window.prompt("What's your username?");
+
+      //   console.log(username);
+
+      document.getElementById("submit").onclick = function () {
+        username = document.getElementById("text").value;
+        document.getElementById(
+          "name"
+        ).textContent = `Your name is ${username}`;
+      };
+
+      // innerHTML可以將標籤也輸入並執行 但現今多數網站都有保護措施 看到<script>不會執行
+    </script>
+  </body>
+</html>
