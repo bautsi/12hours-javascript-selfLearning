@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>checked property</title>
+    <style>
+      body {
+        font-family: Verdana;
+        font-size: 2em;
+      }
+      #submit {
+        font-size: 1em;
+      }
+    </style>
+  </head>
+  <body>
+    <input type="checkbox" id="checkbox" />
+    <label for="checkbox">subscribe</label><br />
+    <br />
+
+    <input type="radio" id="visa" name="card" />
+    <!--name來組隊-->
+    <label for="visa">Visa</label><br />
+    <input type="radio" id="master" name="card" />
+    <label for="master">MasterCard</label><br />
+    <input type="radio" id="pay" name="card" />
+    <label for="pay">PayPal</label><br />
+    <br />
+
+    <button type="submit" id="submit">submit</button>
+
+    <p id="subResult"></p>
+    <p id="payResult"></p>
+
+    <script>
+      const subscribe = document.getElementById("checkbox");
+
+      const visa = document.getElementById("visa");
+      const master = document.getElementById("master");
+      const paypal = document.getElementById("pay");
+
+      const submit = document.getElementById("submit");
+
+      const subscribeResult = document.getElementById("subResult");
+      const paymentResult = document.getElementById("payResult");
+
+      submit.onclick = function () {
+        if (subscribe.checked) {
+          subscribeResult.textContent = "subscribed";
+        } else {
+          subscribeResult.textContent = "not subscribed";
+        }
+
+        if (visa.checked) {
+          paymentResult.textContent = "You are paying with Visa";
+        } else if (master.checked) {
+          paymentResult.textContent = "You are paying with Mastercard";
+        } else if (paypal.checked) {
+          paymentResult.textContent = "You are paying with PayPal";
+        } else {
+          paymentResult.textContent = "You must select a payment type";
+        }
+      };
+    </script>
+  </body>
+</html>

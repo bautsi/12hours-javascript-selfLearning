@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>string methods</title>
+  </head>
+  <body>
+    <script>
+      //   let userName = "BroCode    ";
+
+      //   console.log(userName.charAt(2));
+
+      //   console.log(userName.indexOf("o"));
+      //   console.log(userName.lastIndexOf("o"));
+
+      //   console.log(userName.length);
+
+      //   console.log(userName.trim());
+      //   console.log(userName.trim().length);
+
+      //   console.log(userName.toUpperCase());
+      //   console.log(userName.toLowerCase());
+
+      //   console.log(userName.repeat(2));
+
+      //   console.log(userName.startsWith("")); // 因為空字串被認為存在於除了有字符以外的所有地方
+      //   console.log(userName.startsWith(" "));
+      //   console.log(userName.startsWith("B"));
+
+      //   console.log(userName.endsWith("s"));
+
+      //   console.log(userName.includes("t"));
+
+      let phoneNumber = "123-456-7890";
+
+      //   phoneNumber = phoneNumber.replaceAll("-", "/");
+
+      //   phoneNumber = phoneNumber.padStart(20, "a");
+      phoneNumber = phoneNumber.padEnd(20, "a");
+
+      console.log(phoneNumber);
+
+      // 字串方法比較偏向數據預處理和格式化的部分
+
+      // 信箱驗證範例(ChatGPT)正則表達式:
+      //   function validateEmail(email) {
+      //     const regex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+      //     return regex.test(email);
+      //   }
+
+      //   console.log(validateEmail("example@example.com")); // 返回 true 或 false
+    </script>
+  </body>
+</html>

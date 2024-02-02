@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>if statements</title>
+  </head>
+  <body>
+    <h1>Enter your age:</h1>
+    <input type="text" name="age" id="age" /><br /><br />
+    <button id="submit">submit</button>
+    <h1 id="oldYoung"></h1>
+
+    <script>
+      const input = document.getElementById("age");
+      const showWord = document.getElementById("oldYoung");
+      const button = document.getElementById("submit");
+
+      button.onclick = function () {
+        if (input.value >= 100) {
+          showWord.textContent = "TOO OLD";
+        } else if (input.value == 0) {
+          showWord.textContent = "JUST BORN HELLO?";
+        } else if (input.value >= 18) {
+          showWord.textContent = "Old enough nice";
+        } else if (input.value < 0) {
+          showWord.textContent = "NEGATIVE AGE YO?";
+        } else {
+          showWord.textContent = "TOO YOUNG";
+        }
+      };
+
+      //   let age = 13;
+
+      //   if (age >= 18) {
+      //     console.log("You are old enough to enter this site");
+      //   } else {
+      //     console.log("You must be 18+ to enter this site");
+      //   }
+
+      //   let time = 13;
+
+      //   if (time < 12) {
+      //     console.log("Good morning!");
+      //   } else {
+      //     console.log("Good afternoon!");
+      //   }
+    </script>
+  </body>
+</html>

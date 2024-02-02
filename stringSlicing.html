@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>string slicing</title>
+  </head>
+  <body>
+    <script>
+      const fullName = "Bro Code";
+
+      console.log(fullName.slice());
+
+      console.log(fullName.slice(0, 2)); // begin:0 end:2
+      console.log(fullName.slice(4)); // begin:4
+      console.log(fullName.slice(-2)); // last2
+
+      // 三種情況: 1. begin 2. begin, end(注意不包含) 3. -(直接算)
+
+      const fullName2 = "Broseph Code";
+
+      console.log(fullName2.slice(0, fullName2.indexOf(" ")));
+      console.log(fullName2.slice(fullName2.indexOf(" "))); // 因begin包含所以會有空格
+      console.log(fullName2.slice(fullName2.indexOf(" ") + 1));
+
+      const email = "Bro1@gmail.com";
+
+      let username = email.slice(0, email.indexOf("@"));
+      let extension = email.slice(email.indexOf("@") + 1);
+
+      console.log(username);
+      console.log(extension);
+
+      // slice也可切array
+
+      // 以下是網路抓的array slice範例
+
+      var fruits = ["Banana", "Orange", "Lemon", "Apple", "Mango"];
+      var fruit1 = fruits.slice(1);
+      var fruit2 = fruits.slice(1, 3);
+      var fruit3 = fruits.slice(-3);
+
+      console.log(fruits); // fruits contains ['Banana', 'Orange', 'Lemon', 'Apple', 'Mango']
+      console.log(fruit1); // fruit1 contains ['Orange', 'Lemon', 'Apple', 'Mango']
+      console.log(fruit2); // fruit2 contains ['Orange', 'Lemon']
+      console.log(fruit3); // fruit3 contains ["Lemon", "Apple", "Mango"]
+
+      console.log(typeof fruits);
+      console.log(Array.isArray(fruits));
+
+      // js數據類型:
+      //  1.基本數據類型: undefined、null、string、number、boolean 1.1es6新增: symbol、bigint
+      //  2.普通對象: Object、Array、Function...
+
+      // 基本數據除了null用typeof會返回object(早期錯誤)都正常
+      // 普通對象用typeof返回大部分都是object
+    </script>
+  </body>
+</html>
