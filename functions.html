@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>funtions</title>
+  </head>
+  <body>
+    <script>
+      // function happyBirthday(userName, age) {
+      //   console.log("Happy birthday to you!");
+      //   console.log("Happy birthday to you!");
+      //   console.log(`Happy birthday dear ${userName}!`);
+      //   console.log("Happy birthday to you!");
+      //   console.log(`You are ${age} years old`);
+      // }
+
+      // happyBirthday("Brocode", 25);
+      // happyBirthday("Spongebob", 30);
+      // happyBirthday("Patrick", 37);
+
+      function add(x, y) {
+        // let result = x + y;
+        // return result;
+
+        return x + y;
+      }
+
+      function subtract(x, y) {
+        return x - y;
+      }
+
+      function multiply(x, y) {
+        return x * y;
+      }
+
+      function divide(x, y) {
+        return x / y;
+      }
+
+      function isEven(number) {
+        // if (number % 2 === 0) {
+        //   return true;
+        // } else {
+        //   return false;
+        // }
+
+        return number % 2 === 0 ? true : false;
+      }
+
+      // let answer = add(2, 3);
+      // console.log(answer); // 若無return會undefined
+
+      console.log(add(2, 3));
+
+      console.log(isEven(6));
+
+      function isValidEmail(email) {
+        // 簡易版
+        // if (email.includes("@")) {
+        //   return true;
+        // } else {
+        //   return false;
+        // }
+
+        return email.includes("@") ? true : false; // 三原運算子有點弱 // include要+s
+      }
+
+      console.log(isValidEmail("Bro@fake.com"));
+      console.log(isValidEmail("ElonMa.com"));
+    </script>
+  </body>
+</html>

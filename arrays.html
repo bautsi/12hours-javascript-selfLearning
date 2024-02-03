@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>arrays</title>
+  </head>
+  <body>
+    <script>
+      let fruits = ["apple", "orange", "banana"];
+
+      console.log(fruits);
+      console.log(fruits[0]);
+      console.log(fruits[1]);
+      console.log(fruits[2]);
+
+      fruits[3] = "coconut";
+
+      console.log(fruits);
+      console.log(fruits[3]);
+
+      fruits.pop();
+
+      console.log(fruits);
+
+      fruits.push("coconut");
+
+      console.log(fruits);
+
+      fruits.unshift("mango");
+
+      console.log(fruits);
+
+      let fruitsNum = fruits.length;
+      console.log(fruitsNum);
+      console.log(fruits.indexOf("apple"));
+      console.log(fruits.indexOf("guava")); // does not found -1
+
+      //   for (let i = 0; i < fruits.length; i++) {
+      //     console.log(fruits[i]);
+      //   }
+
+      for (let fruit of fruits) {
+        // for...of 輸出 值 for...in 輸出 鍵
+        console.log(fruit); // for(let x of arrayName){console.log(x);}
+      }
+
+      fruits.sort(); // 數字看頭再... 英文看頭再看二再...
+      console.log(fruits);
+
+      fruits.reverse();
+      console.log(fruits);
+
+      //           coconut
+      //|       | |       | |       | |       |
+      //|       | |       | |       | |       |
+      //|       | |       | |       | |       |
+      //|       | |       | |       | |       |
+      //|       | |       | |       | |coconut|
+      //|coconut| |       | |coconut| |banana |
+      //|banana | |banana | |banana | |orange |
+      //|orange | |orange | |orange | |apple  |
+      //|apple  | |apple  | |apple  | |mango  |
+      //|_______| |_______| |_______| |_______|
+      //           pop       push co   shift ma
+    </script>
+  </body>
+</html>

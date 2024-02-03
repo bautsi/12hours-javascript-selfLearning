@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>variable scope</title>
+  </head>
+  <body>
+    <script>
+      let x = 1; // x為unique 不可再let x = 2; 全域
+
+      function1();
+      function2();
+
+      function function1() {
+        let x = 3; // function內生效only 區域 優先於全域
+        console.log(x);
+      }
+
+      function function2() {
+        console.log(x);
+      }
+
+      for (let i = 0; i < 10; i++) {
+        // for迴圈中生效only 區塊
+        // console.log(i);
+      }
+    </script>
+  </body>
+</html>

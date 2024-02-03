@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>temperature conversion program</title>
+    <style>
+      div {
+        /* margin-left: auto;
+        margin-right: auto; */
+        margin: 0 auto;
+        width: 300px;
+        height: 330px;
+        border: 1px solid white;
+        border-radius: 10px;
+        text-align: center;
+        box-shadow: 0px 0px 8px lightgray, 0px 0px 10px lightgray,
+          0px 0px 12px lightgray;
+      }
+      h1 {
+        margin-top: 33px;
+        color: cornflowerblue;
+      }
+      #input {
+        width: 130px;
+        height: 25px;
+        text-align: center;
+        font-size: large;
+      }
+      #submit {
+        height: 30px;
+        color: white;
+        background-color: lightcoral;
+        border-radius: 5px;
+        border-color: lightcoral;
+      }
+      #submit:active {
+        transform: scale(0.96);
+      }
+      h2 {
+        margin-top: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <h1>Temperature conversion:</h1>
+      <input type="text" id="input" /><br /><br />
+      <input type="radio" name="change" id="toF" /><strong
+        >Celsius ➞ Fahrenheit</strong
+      ><br />
+      <input type="radio" name="change" id="toC" /><strong
+        >Fahrenheit ➞ Celsius</strong
+      ><br /><br />
+      <button id="submit">submit</button>
+      <h2 id="converted"></h2>
+    </div>
+    <script>
+      const input = document.getElementById("input");
+      const toF = document.getElementById("toF");
+      const toC = document.getElementById("toC");
+      const submit = document.getElementById("submit");
+      const output = document.getElementById("converted");
+      let inputValue;
+
+      //   submit.onclick = function () {
+      //     let inputValue = Number(input.value);
+      //     console.log(inputValue); // 用typeof就算是NaN也會是number
+      //   }; // 測試
+
+      submit.onclick = function () {
+        inputValue = Number(input.value);
+        console.log(inputValue);
+
+        if (isNaN(inputValue) || inputValue === 0) {
+          window.alert("Please enter a number");
+        } else {
+          if (toF.checked) {
+            output.textContent = (inputValue * 1.8 + 32).toFixed(1) + "°F";
+          } else if (toC.checked) {
+            output.textContent =
+              (((inputValue - 32) * 5) / 9).toFixed(1) + "°C";
+          } else {
+            window.alert("Please choose toF or toC");
+          }
+        }
+      };
+
+      // 理論上要運用function來做 哈哈 但範例也只是把if包在convert()中然後button設onclick而已 應該還好
+    </script>
+  </body>
+</html>

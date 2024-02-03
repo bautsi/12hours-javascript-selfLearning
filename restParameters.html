@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>rest parameters</title>
+  </head>
+  <body>
+    <script>
+      //   function openFridge(...foods) {
+      //     //剩餘參數 例如(food1, food2, ...foods)中的...foods就會是剩下那些345
+      //     console.log(...foods); //展開運算符 把數組展開成單獨參數
+      //   }
+
+      //   function getFood(...foods) {
+      //     return foods;
+      //   }
+
+      //   const food1 = "pizza";
+      //   const food2 = "hamburger";
+      //   const food3 = "hotdog";
+      //   const food4 = "sushi";
+      //   const food5 = "ramen";
+
+      //   openFridge(food1, food2, food3, food4, food5);
+
+      //   const foods = getFood(food1, food2, food3, food4, food5);
+
+      //   console.log(foods); //沒展開
+
+      function sum(...numbers) {
+        let result = 0;
+        for (let number of numbers) {
+          // for...of輸出值 number為x 從全鍵的每個值取出來 變成result += 1 result += 2...等等
+          result += number;
+        }
+        return result; // 回到total
+      }
+
+      const total = sum(1, 2, 3, 4, 5);
+
+      console.log(`Your total is $${total}`);
+
+      function getAverage(...numbers) {
+        let result = 0;
+        for (let number of numbers) {
+          result += number;
+        }
+        return result / numbers.length;
+      }
+
+      const average = getAverage(1, 2, 3, 4, 5);
+
+      console.log(`Your average is $${average}`);
+
+      function combineString(...strings) {
+        return strings.join(" ");
+      }
+
+      const fullName = combineString("Mr.", "Spongebob", "Squarepants", "III");
+
+      console.log(fullName);
+    </script>
+  </body>
+</html>
