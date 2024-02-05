@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>forEach()</title>
+  </head>
+  <body>
+    <script>
+      let numbers = [1, 2, 3, 4, 5];
+
+      numbers.forEach(display);
+
+      function display(element) {
+        console.log(element);
+      }
+
+      function double(element) {
+        element *= 2;
+        console.log(element);
+      }
+
+      numbers.forEach(double);
+
+      function cube(element) {
+        element = Math.pow(element, 3);
+        console.log(element);
+      }
+      numbers.forEach(cube);
+
+      let fruits = ["apple", "orange", "banana", "coconut"];
+
+      fruits.forEach(capitalize);
+      fruits.forEach(display);
+
+      function upperCase(element, index, array) {
+        array[index] = element.toUpperCase();
+      }
+
+      function lowerCase(element, index, array) {
+        array[index] = element.toLowerCase();
+      }
+
+      function capitalize(element, index, array) {
+        array[index] = element.charAt(0).toUpperCase() + element.slice(1);
+      }
+
+      function display(element) {
+        console.log(element);
+      }
+      //   let numbers = [1, 2, 3, 4, 5];
+      //   numbers.forEach(double);
+      //   numbers.forEach(display);
+      //   function double(element, index, array) {
+      //     array[index] = element * 2;
+      //   }
+      //   function display(element) {
+      //     console.log(element);
+      //   }
+      //   使用forEach()方法時本身就可以用三個預設參數element、index 和 array 參數
+      //   1. 當前元素（Current Element） - 這是正在被處理的陣列元素。
+      //   2. 索引（Index） - 這是當前元素在陣列中的索引。
+      //   3. 陣列本身（Array） - 這是正在被迭代的陣列。
+
+      //   function test(a) {}
+      //   console.log(numbers.forEach(test)); // forEach雖然要用function當參數但不能亂給
+      //   這個函數會應用在array每個元素上
+      //   forEach() 像一個在流水線上的工作人員，它會對流水線(array)上的每一個元素進行一個指定的動作
+      //   提供一個空的函數給 forEach()，這就相當於告訴工作人員對流水線上的每個元素“什麼都不要做”。這樣的話每個元素都會被看一遍，但不會有任何實際的動作發生。
+    </script>
+  </body>
+</html>
