@@ -34,6 +34,7 @@
       fruits.forEach(display);
 
       function upperCase(element, index, array) {
+        // element可以用item
         array[index] = element.toUpperCase();
       }
 
@@ -48,6 +49,11 @@
       function display(element) {
         console.log(element);
       }
+
+      for (let i = 0; i < fruits.length; i++) {
+        console.log(fruits[i]);
+      }
+
       //   let numbers = [1, 2, 3, 4, 5];
       //   numbers.forEach(double);
       //   numbers.forEach(display);
@@ -67,6 +73,15 @@
       //   這個函數會應用在array每個元素上
       //   forEach() 像一個在流水線上的工作人員，它會對流水線(array)上的每一個元素進行一個指定的動作
       //   提供一個空的函數給 forEach()，這就相當於告訴工作人員對流水線上的每個元素“什麼都不要做”。這樣的話每個元素都會被看一遍，但不會有任何實際的動作發生。
+
+      //   一般函數 需要命名
+
+      fruits.forEach(function (item) {
+        // 匿名函數 不需要命名
+        console.item;
+      });
+
+      fruits.forEach((item) => console.log(item)); // 箭頭函數 連function都不用寫了
     </script>
   </body>
 </html>

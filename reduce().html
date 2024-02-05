@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>reduce()</title>
+  </head>
+  <body>
+    <script>
+      // array.reduce(callback[accumulator, currentValue, currentIndex, array], initialValue) callback不用寫出來只是做分隔
+      const prices = [5, 30, 10, 25, 15, 20];
+
+      const total = prices.reduce((acc, cur) => acc + cur); // 如果有initialValue就要用return+大括號後面, 數字這樣
+      console.log(`$${total.toFixed(2)}`);
+
+      const grades = [75, 50, 90, 80, 65, 95];
+
+      const getMax = grades.reduce((acc, cur) => {
+        return Math.max(acc, cur);
+      }, 0);
+      console.log(getMax);
+
+      const getMin = grades.reduce((acc, cur) => {
+        return Math.min(acc, cur);
+      }, Infinity); //或是不要設 直接給第一個值
+      console.log(getMin);
+
+      // let numbers = [1, 2, 3];
+      // let doubledNumbers = numbers.reduce((accumulator, current) => {
+      //   accumulator.push(current * 2);
+      //   return accumulator;
+      // }, []); // 如果不提供空陣列 [] 作為初始值，這段代碼將無法正常運行，因為累加器將不是一個陣列，而是數字類型。
+      // // 基本上注意有沒有要改變acc的type還有值就好 當然開始位置也是
+      // console.log(doubledNumbers);
+
+      // 1. 展開語法（Spread Syntax）... 結合 Math.max 在這種方法中，展開語法 ... 被用來將一個陣列轉換為多個獨立的參數。這些參數隨後一次性地被傳遞給 Math.max 函數。
+      let numbers = [1, 3, 2, 4];
+      let maxNumber = Math.max(...numbers);
+      // 2. reduce 方法結合 Math.max 在這種方法中，reduce 被用來逐個處理陣列中的元素。每次迭代都會比較累加器（到目前為止找到的最大值）和當前值，然後更新累加器為這兩者中的較大值。
+      let numbers2 = [1, 3, 2, 4];
+      let maxNumber2 = numbers2.reduce(
+        (acc, cur) => Math.max(acc, cur),
+        -Infinity
+      );
+      // 總結:
+      // 展開語法 + Math.max：一次性處理所有元素，將陣列元素作為獨立的參數傳遞給 Math.max。
+      // reduce + Math.max：逐個處理元素，每次迭代比較累加器和當前值，逐步更新找到的最大值。
+    </script>
+  </body>
+</html>

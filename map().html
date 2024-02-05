@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>map()</title>
+  </head>
+  <body>
+    <script>
+      //   const arr = [3, 4, 5, 6];
+
+      //   arr.forEach((element) => console.log((element *= 3))); forEach回原array
+
+      //   const newArr = arr.map((element) => element * 3); map給到新array
+      //   console.log(arr);
+      //   console.log(newArr);
+
+      const numbers = [1, 2, 3, 4, 5];
+
+      //   const squares = numbers.map(square); // 範例方法
+      //   console.log(squares);
+
+      //   function square(element) {
+      //     return Math.pow(element, 2);
+      //   }
+
+      const squareNumbers = numbers.map((element) => Math.pow(element, 2));
+      console.log(squareNumbers);
+
+      const cubeNumbers = numbers.map((element) => Math.pow(element, 3));
+      console.log(cubeNumbers);
+
+      const students = ["Spongebob", "Patrick", "Squidward", "Sandy"];
+
+      const upperStudents = students.map((element) => element.toUpperCase());
+      console.log(upperStudents);
+
+      const lowerStudents = students.map((element) => element.toLowerCase());
+      console.log(lowerStudents);
+
+      const dates = ["2024-1-10", "2025-2-20", "2026-3-30"];
+
+      const processedDates = dates.map((element) => {
+        const parts = element.split("-");
+        return `${parts[1]}/${parts[2]}/${parts[0]}`;
+      });
+      console.log(processedDates);
+    </script>
+  </body>
+</html>
