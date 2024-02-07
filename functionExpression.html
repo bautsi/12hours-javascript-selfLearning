@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>function expression</title>
+  </head>
+  <body>
+    <script>
+      // function declaration 定義一個可重複使用且特定功能的區塊code
+
+      function helloWorld() {
+        console.log("Hello World");
+      }
+      helloWorld();
+
+      // function expression 定義一個function為值或變數的方法
+
+      const hello = function () {
+        console.log("Hello World");
+      };
+      hello(); // 要注意的是函數聲明可以讓helloWorld()在其上方因為有Hoisting(提升) 但函數表達式不行 下方才不會報錯
+
+      setTimeout(hello, 3000); // 3sec
+
+      setTimeout(function () {
+        console.log("Hello World");
+      }, 4000);
+
+      // 範例接下來用map/filter/reduce示範 但就是我用過的那些箭頭函數 範例也只是寫匿名函數而已 就先不寫了
+    </script>
+  </body>
+</html>
