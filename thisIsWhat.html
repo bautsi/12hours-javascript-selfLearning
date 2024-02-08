@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>what is this</title>
+  </head>
+  <body>
+    <script>
+      const person1 = {
+        name: "Spongebob",
+        favFood: "hamburgers",
+        sayHello: function () {
+          console.log(`Hi! I am ${this.name}`); // 用物件來調用this 指向物件
+        },
+        eat: function () {
+          console.log(`${this.name} is eating ${this.favFood}`);
+        },
+      };
+
+      person1.sayHello();
+      person1.eat();
+
+      console.log(this); // 在全域環境執行會指向window不管嚴格與否
+
+      class people {
+        constructor(name) {
+          this.name = name;
+        }
+
+        sayHi() {
+          console.log(`Hi, my name is ${this.name}.`);
+        }
+      }
+
+      let newPeople = new people("yolo"); // this會指向使用new建立的實體物件
+      newPeople.sayHi();
+    </script>
+  </body>
+</html>
