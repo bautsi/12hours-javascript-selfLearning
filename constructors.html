@@ -7,13 +7,17 @@
   </head>
   <body>
     <script>
-      function car(make, model, year, color) {
+      function Car(make, model, year, color) {
+        // 建構子通常大寫開頭
         this.make = make;
         this.model = model;
         this.year = year;
         this.color = color;
 
         this.drive = () => console.log(`You drive the ${this.model}`);
+        // 好像可以在傳統建構子函式外面用 類名.prototype.方法名 = function(){};
+        // 這樣更高效
+        // 當然用class會比較好
       }
 
       const car1 = new car("Ford", "Mustang", 2024, "red");
