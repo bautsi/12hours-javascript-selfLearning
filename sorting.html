@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>sorting</title>
+  </head>
+  <body>
+    <script>
+      let fruits = ["apple", "orange", "coconut", "pineapple"];
+
+      fruits.sort();
+
+      console.log(fruits);
+
+      let numbers = [1, 10, 2, 9, 3, 8, 4, 7, 5, 6];
+
+      //   numbers.sort(); // Unicode編碼排序
+
+      console.log(numbers.sort((a, b) => a - b)); // sort回傳正值後取代前 反之不變
+      // 所以(a, b)回傳a - b為升序 b - a為降序
+      // 此為bubble sort
+
+      console.log(numbers.sort((a, b) => b - a));
+
+      const people = [
+        { name: "Spongebob", age: 30, gpa: 3.0 },
+        { name: "Patrick", age: 37, gpa: 1.5 },
+        { name: "Squidward", age: 51, gpa: 2.5 },
+        { name: "Sandy", age: 27, gpa: 4.0 },
+      ];
+
+      console.log(people.sort((a, b) => a.age - b.age));
+
+      console.log(people.sort((a, b) => a.name - b.name)); // 沒什麼效果
+      console.log(people.sort((a, b) => a.name.localeCompare(b.name)));
+      // localeCompare() 回傳一個數字，用來表示其與被比較的字串的先後順序
+    </script>
+  </body>
+</html>

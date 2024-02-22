@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>arrays of objects</title>
+  </head>
+  <body>
+    <script>
+      const fruits = [
+        { name: "apple", color: "red", calories: 95 },
+        { name: "orange", color: "orange", calories: 45 },
+        { name: "banana", color: "yellow", calories: 105 },
+        { name: "coconut", color: "white", calories: 159 },
+        { name: "pineapple", color: "yellow", calories: 37 },
+      ];
+
+      // console.log(fruits[3].calories);
+
+      fruits.push({ name: "grapes", color: "purple", calories: 62 });
+
+      console.log(fruits);
+
+      fruits.pop();
+
+      console.log(fruits.length);
+
+      fruits.forEach((fruits) => console.log(fruits.name));
+
+      const fruitNames = fruits.map((fruit) => fruit.name);
+      const fruitColors = fruits.map((fruit) => fruit.color);
+      const fruitCalories = fruits.map((fruit) => fruit.calories);
+
+      console.log(fruitNames);
+      console.log(fruitColors);
+      console.log(fruitCalories);
+
+      const yellowFruits = fruits.filter((fruit) => fruit.color === "yellow");
+      const lowCalFruits = fruits.filter((fruit) => fruit.calories < 100);
+      const highCalFruits = fruits.filter((fruit) => fruit.calories >= 100);
+
+      console.log(yellowFruits);
+      console.log(lowCalFruits);
+      console.log(highCalFruits);
+
+      // const maxCalFruit = fruits.reduce((max, cur) =>
+      //   cur.calories > max.calories ? cur : max
+      // ); 範例
+
+      const maxCalFruit = fruits.reduce(
+        (max, cur) => {
+          if (cur.calories > max.calories) {
+            return cur;
+          } else if (cur.calories < 0 || typeof cur.calories != "number") {
+            return "Calories should be positive numbers";
+          } else {
+            return max;
+          }
+        },
+        { calories: 0 }
+      ); // 可以設定初始值為0 但要注意比對的資料格式 向這邊就不能用number0來比 會出錯誤顯示0最大
+
+      console.log(maxCalFruit);
+    </script>
+  </body>
+</html>
