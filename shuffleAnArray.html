@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>shuffle an array</title>
+  </head>
+  <body>
+    <script>
+      const cards = ["A", 2, 3, 4, 5, 6, 7, 8, 9, 10, "J", "Q", "K"];
+
+      //   cards.sort(() => Math.random() - 0.5);
+      //   不建議直接sort因機率分布不均勻 建議用洗牌演算法
+
+      function fisherYates(shuffle) {
+        const n = shuffle.length;
+        for (let i = 0; i < n; i++) {
+          const ranNum = Math.floor(Math.random() * n - i) + i;
+          [shuffle[i], shuffle[ranNum]] = [shuffle[ranNum], shuffle[i]];
+        }
+      }
+
+      console.log(cards);
+      fisherYates(cards);
+      console.log(cards);
+
+      // 範例乖乖從最後開始
+    </script>
+  </body>
+</html>
