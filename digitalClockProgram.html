@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>digital clock program</title>
+    <style>
+      body {
+        background-image: url(images/clock.jpg);
+        background-size: cover;
+        background-repeat: no-repeat;
+        margin: 0;
+      }
+      #clock-container {
+        display: flex;
+        height: 100vh;
+      }
+      #clock {
+        margin: auto;
+        font-family: monospace;
+        font-size: 6.5rem;
+        backdrop-filter: blur(5px);
+        width: 100%;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="clock-container">
+      <div id="clock">00:00:00</div>
+    </div>
+
+    <script>
+      function ampm() {
+        let date = new Date();
+
+        let hour = date.getHours().toString().padStart(2, "0");
+        let minute = date.getMinutes().toString().padStart(2, "0");
+        let second = date.getSeconds().toString().padStart(2, "0");
+        let time = document.getElementById("clock");
+
+        if (hour < 12) {
+          time.textContent = `${hour}:${minute}:${second} AM`;
+        } else {
+          time.textContent = `${hour}:${minute}:${second} PM`;
+        }
+      }
+      ampm(); // 不然開頭會是原先設定的00:00:00
+      setInterval(ampm, 1000);
+    </script>
+  </body>
+</html>

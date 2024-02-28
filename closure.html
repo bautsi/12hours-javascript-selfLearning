@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>closure</title>
+  </head>
+  <body>
+    <script>
+      function outer() {
+        let message = "Hello";
+
+        function inner() {
+          console.log(message);
+        }
+
+        inner();
+      }
+
+      message = "Goodbye"; // 沒用因為outer內的message是private
+
+      outer();
+
+      function createCounter() {
+        let count = 0;
+
+        function increment() {
+          count++;
+          console.log(`Count increased to ${count}`);
+        }
+
+        function getCount() {
+          return count;
+        }
+
+        return { increment, getCount };
+      }
+
+      const counter = createCounter();
+
+      counter.increment();
+      counter.increment(); // 不用閉包會重製 但let放外面又不安全
+      counter.increment();
+
+      console.log(`The current count is ${counter.getCount()}`);
+
+      function createGame() {
+        let score = 0;
+
+        function increaseScore(points) {
+          score += points;
+          console.log(`+${points}pts`);
+        }
+
+        function decreaseScore(points) {
+          score -= points;
+          console.log(`-${points}pts`);
+        }
+
+        function getScore() {
+          return score;
+        }
+
+        return { increaseScore, decreaseScore, getScore };
+      }
+
+      score = 100000000; // 沒閉包會被算到
+
+      const game = createGame(); // 記得因為把內部閉包函式轉成object 所以new一個 static勿忘
+
+      game.increaseScore(5);
+      game.increaseScore(6);
+      game.decreaseScore(3);
+
+      console.log(`The final score is ${game.getScore()}pts`);
+    </script>
+  </body>
+</html>
