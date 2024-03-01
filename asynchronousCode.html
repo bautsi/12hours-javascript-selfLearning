@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>asynchronous code</title>
+  </head>
+  <body>
+    <script>
+        // 同步非同步跟字面上不太一樣 同步是指一行一行執行完再下一行 非同步是不管其他人
+        // 將需要耗時的非同步操作（如從後端資料庫獲取數據）放在代碼較前的位置，並允許這些操作在後台進行，同時繼續執行頁面的其他同步代碼，這是非同步編程的核心概念之一。
+      function func1(callback) {
+        setTimeout(() => {
+          console.log("Task 0", 3000);
+          callback();
+        });
+      }
+
+      function func2() {
+        console.log("Task 1");
+        console.log("Task 2");
+        console.log("Task 3");
+      }
+
+      func1(func2);
+    </script>
+  </body>
+</html>
