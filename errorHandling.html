@@ -6,6 +6,37 @@
     <title>error handling</title>
   </head>
   <body>
-    <script></script>
+    <script>
+      // console.lag("Hello");
+      // console.log("You have reached the end!");
+
+      try {
+        console.log(x);
+      } catch (error) {
+        console.error(error); // 就算console顯示紅色 但還是會print執行程式碼
+      } finally {
+        // 若在promise的情況中可以避免resolve跟reject處理相同的程式碼
+        console.log("This always executes");
+      }
+
+      console.log("You have reached the end!");
+
+      try {
+        const dividend = Number(window.prompt("Enter a dividend: "));
+        const divisor = Number(window.prompt("Enter a divisor: "));
+
+        if (divisor == 0) {
+          throw new Error("You can't divide by zero!");
+        }
+        if (isNaN(dividend) || isNaN(divisor)) {
+          throw new Error("Values must be a number");
+        }
+
+        const result = dividend / divisor;
+        console.log(result); // 除以0會infinity 出事
+      } catch (error) {
+        console.log(error);
+      }
+    </script>
   </body>
 </html>

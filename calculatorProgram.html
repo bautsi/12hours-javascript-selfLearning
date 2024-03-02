@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>calculator program</title>
+    <style>
+      body {
+        margin: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+      #container {
+        height: 350px;
+        width: 250px;
+      }
+      #displaycon {
+        background-color: #303030;
+        height: 18%;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+      }
+      #display {
+        color: white;
+        font-size: 2.8rem;
+        font-family: arial;
+        text-align: left;
+        padding: 6px;
+        padding-left: 10px;
+      }
+      #buttons {
+        background-color: #202121;
+        height: 82%;
+        border-bottom-left-radius: 10px;
+        border-bottom-right-radius: 10px;
+      }
+      button {
+        background-color: hsl(120, 1%, 27%);
+        text-align: center;
+        height: 50px;
+        width: 50px;
+        border: 0;
+        color: white;
+        font-size: 25px;
+        font-weight: bold;
+        border-radius: 100%;
+        margin-right: 5px;
+        margin-left: 5px;
+        margin-top: 6px;
+        padding: 0px;
+      }
+      button:hover {
+        background-color: hsl(120, 1%, 37%);
+      }
+      button:active {
+        background-color: hsl(120, 1%, 47%);
+      }
+      .operator {
+        background-color: hsl(33, 95%, 58%);
+        margin-left: 9px;
+      }
+      .operator:hover {
+        background-color: hsl(33, 95%, 68%);
+      }
+      .operator:active {
+        background-color: hsl(33, 95%, 78%);
+      }
+    </style>
+  </head>
+  <body>
+    <div id="container">
+      <div id="displaycon"><div id="display"></div></div>
+      <div id="buttons">
+        <button class="operator" id="+">+</button><button id="7">7</button
+        ><button id="8">8</button><button id="9">9</button><br />
+        <button class="operator" id="-">-</button><button id="4">4</button
+        ><button id="5">5</button><button id="6">6</button><br />
+        <button class="operator" id="*">×</button><button id="1">1</button
+        ><button id="2">2</button><button id="3">3</button><br />
+        <button class="operator" id="/">÷</button><button id="0">0</button
+        ><button id=".">.</button><button id="=">=</button><br />
+        <button class="operator" id="c">C</button>
+      </div>
+    </div>
+    <script>
+      const display = document.getElementById("display");
+      const numZero = document.getElementById("0");
+      const numOne = document.getElementById("1");
+      const numTwo = document.getElementById("2");
+      const numThree = document.getElementById("3");
+      const numFour = document.getElementById("4");
+      const numFive = document.getElementById("5");
+      const numSix = document.getElementById("6");
+      const numSeven = document.getElementById("7");
+      const numEight = document.getElementById("8");
+      const numNine = document.getElementById("9");
+      const plus = document.getElementById("+");
+      const minus = document.getElementById("-");
+      const times = document.getElementById("*");
+      const divide = document.getElementById("/");
+      const dot = document.getElementById(".");
+      const c = document.getElementById("c");
+      const equal = document.getElementById("=");
+
+      display.textContent = "";
+
+      numZero.onclick = () => {
+        display.textContent += "0";
+      };
+      numOne.onclick = () => {
+        display.textContent += "1";
+      };
+      numTwo.onclick = () => {
+        display.textContent += "2";
+      };
+      numThree.onclick = () => {
+        display.textContent += "3";
+      };
+      numFour.onclick = () => {
+        display.textContent += "4";
+      };
+      numFive.onclick = () => {
+        display.textContent += "5";
+      };
+      numSix.onclick = () => {
+        display.textContent += "6";
+      };
+      numSeven.onclick = () => {
+        display.textContent += "7";
+      };
+      numEight.onclick = () => {
+        display.textContent += "8";
+      };
+      numNine.onclick = () => {
+        display.textContent += "9";
+      };
+      dot.onclick = () => {
+        display.textContent += ".";
+      };
+      plus.onclick = () => {
+        display.textContent += "+";
+      };
+      minus.onclick = () => {
+        display.textContent += "-";
+      };
+      times.onclick = () => {
+        display.textContent += "*";
+      };
+      divide.onclick = () => {
+        display.textContent += "÷";
+      };
+      c.onclick = () => {
+        result = 0;
+        display.textContent = "";
+      };
+
+      equal.onclick = () => {
+        // try catch應用
+        try {
+          display.textContent = eval(display.textContent);
+        } catch (error) {
+          display.textContent = "ERROR";
+        }
+      };
+
+      // 可將所有數字與運算子用一個function("數or運")做onclick處理
+      // 可將字串用eval()來做執行程式
+
+      // eval() 函数和 innerHTML 相似，因为它们都可以执行字符串中的代码。
+      // 使用 Function 构造函数相当于为执行的代码创建了一个“沙盒”环境，这个环境与外部作用域隔离。这样，即使代码试图执行恶意操作，它的影响范围也被限制在这个“沙盒”内，从而提高了安全性。
+      // 然而，即使是这种方法也不是完全没有风险。如果传入的字符串包含恶意代码，它仍然可以执行一些有害的操作，比如访问或修改全局对象。
+    </script>
+  </body>
+</html>
