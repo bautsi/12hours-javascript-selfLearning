@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Valorant aim train</title>
+    <style>
+      html {
+        height: 100vh;
+        width: 100%;
+      }
+      body {
+        margin: 0;
+        height: 100%;
+        width: 100%;
+      }
+      #scoreBoard {
+        position: absolute;
+        top: 10px;
+        left: 1540px;
+        height: 110px;
+        width: 370px;
+        border: 1px;
+        border-radius: 20px;
+        background-color: black;
+      }
+      #missed {
+        position: absolute;
+        background-color: white;
+        top: 10px;
+        left: 10px;
+        height: 90px;
+        width: 170px;
+        border-radius: 15px;
+      }
+      #missedText {
+        position: absolute;
+        background-color: black;
+        top: 10px;
+        left: 10px;
+        height: 35px;
+        width: 150px;
+        border-radius: 15px;
+        color: white;
+        text-align: center;
+        font-family: monospace;
+        font-size: 30px;
+      }
+      #missedNum {
+        position: absolute;
+        background-color: black;
+        top: 45px;
+        left: 10px;
+        height: 35px;
+        width: 150px;
+        border-radius: 15px;
+        color: white;
+        text-align: center;
+        font-family: monospace;
+        font-size: 30px;
+      }
+      #timePassed {
+        position: absolute;
+        background-color: white;
+        top: 10px;
+        right: 10px;
+        height: 90px;
+        width: 170px;
+        border-radius: 15px;
+      }
+      #timePassedText {
+        position: absolute;
+        background-color: black;
+        top: 10px;
+        left: 10px;
+        height: 35px;
+        width: 150px;
+        border-radius: 15px;
+        color: white;
+        text-align: center;
+        font-family: monospace;
+        font-size: 30px;
+      }
+      #timePassedNum {
+        position: absolute;
+        background-color: black;
+        top: 45px;
+        left: 10px;
+        height: 35px;
+        width: 150px;
+        border-radius: 15px;
+        color: white;
+        text-align: center;
+        font-family: monospace;
+        font-size: 30px;
+      }
+      #user {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        height: 110px;
+        width: 370px;
+        border: 1px;
+        border-radius: 20px;
+        background-color: black;
+      }
+      #targets {
+        position: relative;
+        height: 100vh;
+        background: url(/images/val.png) no-repeat;
+        background-size: 1920px 1080px;
+        cursor: crosshair;
+      }
+      #start {
+        position: absolute;
+        top: 40px;
+        left: 936px;
+        width: 42.656px;
+        scale: 1.7;
+        font-family: monospace;
+        font-weight: 550;
+        border: 0;
+        background-color: #e2eaf0;
+      }
+      #start:hover {
+        transform: scale(1.04);
+      }
+      #start:active {
+        transform: scale(0.97);
+      }
+      .target {
+        position: absolute;
+        background-repeat: no-repeat;
+        background-image: url(/images/target.png);
+        background-size: 101%;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        border: 0;
+        cursor: crosshair;
+        display: none;
+      }
+      #t1 {
+        top: 565px;
+        left: 257px;
+      }
+      #t2 {
+        top: 515px;
+        left: 260px;
+      }
+      #t3 {
+        top: 590px;
+        left: 305px;
+      }
+      #t4 {
+        top: 525px;
+        left: 837px;
+      }
+      #t5 {
+        top: 530px;
+        left: 1027px;
+      }
+      #t6 {
+        top: 520px;
+        left: 1255px;
+      }
+      #t7 {
+        top: 515px;
+        left: 1515px;
+      }
+      #t8 {
+        top: 532px;
+        left: 1130px;
+      }
+      #t9 {
+        top: 430px;
+        left: 1500px;
+      }
+      #t10 {
+        top: 440px;
+        left: 1125px;
+      }
+      #t11 {
+        top: 430px;
+        left: 1305px;
+      }
+      #t12 {
+        top: 520px;
+        left: 1835px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="targets">
+      <div id="user"></div>
+      <div id="scoreBoard">
+        <div id="missed">
+          <div id="missedText">Missed</div>
+          <div id="missedNum">3</div>
+        </div>
+        <div id="timePassed">
+          <div id="timePassedText">Time</div>
+          <div id="timePassedNum">00:00:00</div>
+        </div>
+      </div>
+      <button id="start">START</button>
+      <button id="t1" class="target"></button
+      ><button id="t2" class="target"></button
+      ><button id="t3" class="target"></button
+      ><button id="t4" class="target"></button
+      ><button id="t5" class="target"></button
+      ><button id="t6" class="target"></button
+      ><button id="t7" class="target"></button
+      ><button id="t8" class="target"></button
+      ><button id="t9" class="target"></button
+      ><button id="t10" class="target"></button
+      ><button id="t11" class="target"></button
+      ><button id="t12" class="target"></button>
+    </div>
+    <script>
+      const target = document.getElementsByClassName("target");
+      const start = document.getElementById("start");
+      const missedNum = document.getElementById("missedNum");
+
+      let headshot = 0;
+      let miss = 0;
+
+      // 點擊開始的監聽
+      start.addEventListener("click", () => {
+        const started = Date.now();
+        // 開始倒數顯示
+        let countDown = setInterval(() => {
+          let now = Date.now();
+          start.textContent = 4 - Math.floor((now - started) / 1000);
+          if (4 - Math.floor((now - started) / 1000) == 0) {
+            start.textContent = "GO!";
+          }
+          if (Math.floor((now - started) / 1000) > 3) {
+            clearInterval(countDown);
+          }
+        }, 1000);
+        // 倒數完顯示所有目標
+        setTimeout(() => {
+          headshot = 0;
+          Array.from(target).forEach((tar) => (tar.style.display = "block"));
+        }, 4000);
+      });
+
+      // 點擊標靶的監聽
+      for (let i = 0; i < target.length; i++) {
+        // 擊中數
+        target[i].addEventListener("click", function () {
+          this.style.display = "none";
+          headshot++;
+          missedNum.textContent = headshot;
+          // 射擊完畢
+          if (Array.from(target).every((tar) => tar.style.display === "none")) {
+            start.textContent = "START";
+          }
+        });
+      }
+    </script>
+  </body>
+</html>
