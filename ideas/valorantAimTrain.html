@@ -221,9 +221,11 @@
       const target = document.getElementsByClassName("target");
       const start = document.getElementById("start");
       const missedNum = document.getElementById("missedNum");
+      const timePassedNum = document.getElementById("timePassedNum");
 
       let headshot = 0;
       let miss = 0;
+      let stopWatch;
 
       // 點擊開始的監聽
       start.addEventListener("click", () => {
@@ -243,6 +245,21 @@
         setTimeout(() => {
           headshot = 0;
           Array.from(target).forEach((tar) => (tar.style.display = "block"));
+          // 計時開始
+          let startTime = Date.now();
+          stopWatch = setInterval(() => {
+            let passedTime = Date.now() - startTime;
+            let minute = Math.floor((passedTime / (1000 * 60)) % 60)
+              .toString()
+              .padStart(2, "0");
+            let second = Math.floor((passedTime / 1000) % 60)
+              .toString()
+              .padStart(2, "0");
+            let millisecond = Math.floor((passedTime / 10) % 100)
+              .toString()
+              .padStart(2, "0");
+            timePassedNum.textContent = `${minute}:${second}:${millisecond}`;
+          });
         }, 4000);
       });
 
@@ -256,6 +273,7 @@
           // 射擊完畢
           if (Array.from(target).every((tar) => tar.style.display === "none")) {
             start.textContent = "START";
+            clearInterval(stopWatch);
           }
         });
       }
