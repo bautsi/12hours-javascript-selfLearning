@@ -196,7 +196,7 @@
       <div id="scoreBoard">
         <div id="missed">
           <div id="missedText">Missed</div>
-          <div id="missedNum">3</div>
+          <div id="missedNum">0</div>
         </div>
         <div id="timePassed">
           <div id="timePassedText">Time</div>
@@ -218,24 +218,27 @@
       ><button id="t12" class="target"></button>
     </div>
     <script>
+      const targets = document.getElementById("targets");
       const target = document.getElementsByClassName("target");
       const start = document.getElementById("start");
       const missedNum = document.getElementById("missedNum");
       const timePassedNum = document.getElementById("timePassedNum");
 
-      let headshot = 0;
       let miss = 0;
       let stopWatch;
+      let isRun = false;
 
       // 點擊開始的監聽
       start.addEventListener("click", () => {
         const started = Date.now();
-        // 開始倒數顯示
+        // 開始倒數顯示，重製失誤數
         let countDown = setInterval(() => {
           let now = Date.now();
           start.textContent = 4 - Math.floor((now - started) / 1000);
           if (4 - Math.floor((now - started) / 1000) == 0) {
             start.textContent = "GO!";
+            missedNum.textContent = 0;
+            isRun = true;
           }
           if (Math.floor((now - started) / 1000) > 3) {
             clearInterval(countDown);
@@ -268,15 +271,22 @@
         // 擊中數
         target[i].addEventListener("click", function () {
           this.style.display = "none";
-          headshot++;
-          missedNum.textContent = headshot;
           // 射擊完畢
           if (Array.from(target).every((tar) => tar.style.display === "none")) {
+            isRun = false;
             start.textContent = "START";
             clearInterval(stopWatch);
           }
         });
       }
+
+      // 失誤計算顯示
+      targets.addEventListener("mousedown", (e) => {
+        if (!e.target.classList.contains("target") && isRun) {
+          miss++;
+          missedNum.textContent = miss;
+        }
+      });
     </script>
   </body>
 </html>
