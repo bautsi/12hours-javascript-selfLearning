@@ -4,10 +4,26 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>DOM</title>
+    <style>
+      body {
+        background-color: white;
+      }
+    </style>
   </head>
   <body>
+    <h1 id="welcome">Welcome&nbsp;</h1>
     <script>
-        
+      console.log(document);
+      console.dir(document); // dir顯示所有屬性
+
+      document.title = "My website";
+
+      document.body.style.backgroundColor = "hsl(0, 0%, 15%)";
+
+      const username = "";
+      const welcome = document.getElementById("welcome");
+
+      welcome.textContent += username === "" ? `Guest` : username;
     </script>
   </body>
 </html>

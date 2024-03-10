@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>element selectors</title>
+  </head>
+  <body>
+    <h1 id="my-heading">Food R Us</h1>
+
+    <div class="fruits">Apple</div>
+    <div class="fruits">Orrange</div>
+    <div class="fruits">Banana</div>
+
+    <h4>Root Vegetables</h4>
+    <ul>
+      <li>Beets</li>
+      <li>Carrots</li>
+      <li>Potatoes</li>
+    </ul>
+
+    <h4>Non-Root Vegetables</h4>
+    <ul>
+      <li>Broccoli</li>
+      <li>Celery</li>
+      <li>Onions</li>
+    </ul>
+    <script>
+      const myHeading = document.getElementById("my-heading");
+      myHeading.style.backgroundColor = "yellow";
+      myHeading.style.textAlign = "center";
+
+      console.log(myHeading);
+
+      const fruits = document.getElementsByClassName("fruits");
+
+      console.log(fruits);
+
+      //   fruits[0].style.backgroundColor = "yellow";
+
+      //   for (let fruit of fruits) {
+      //     fruit.style.backgroundColor = "yellow";
+      //   }
+
+      // fruits.foreach() // HTML COLLECTION不是array
+      Array.from(fruits).forEach((fruit) => {
+        fruit.style.backgroundColor = "yellow";
+      });
+
+      const h4Elements = document.getElementsByTagName("h4");
+
+      for (let h4 of h4Elements) {
+        h4.style.backgroundColor = "red";
+      }
+
+      //   let openh4 = [...h4Elements];
+      //   console.log(h4Elements);
+      //   console.log(openh4);
+      // Array.from(openh4).every((h44) => (h44.style.backgroundColor = "blue")); // ?
+
+      const trfal = Array.from(h4Elements).every(
+        (h4) => (h4.style.backgroundColor = "pink")
+      );
+
+      console.log(trfal); // every回傳boolean forEach不回傳
+
+      Array.from(document.getElementsByTagName("li")).forEach(
+        (li) => (li.style.backgroundColor = "orange")
+      );
+
+      const element = document.querySelector(".fruits");
+      element.style.backgroundColor = "lightgreen"; // 第一個
+
+      const elementAll = document.querySelectorAll("li");
+      fruits[1].style.backgroundColor = "lightblue";
+    </script>
+  </body>
+</html>
