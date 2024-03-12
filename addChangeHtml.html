@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>add & change html</title>
+    <style>
+      .box {
+        border: 3px solid;
+        width: 100%;
+        height: 125px;
+      }
+      #fruits {
+        border: 3px solid;
+        font-size: 2rem;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="box1" class="box">
+      <p>Box1</p>
+    </div>
+    <div id="box2" class="box">
+      <p>Box2</p>
+    </div>
+    <div id="box3" class="box">
+      <p>Box3</p>
+    </div>
+    <div id="box4" class="box">
+      <p>Box4</p>
+    </div>
+
+    <ol id="fruits">
+      <li id="apple">apple</li>
+      <li id="orange">orange</li>
+      <li id="banana">banana</li>
+    </ol>
+    <script>
+      const newH1 = document.createElement("h1"); // 建立
+
+      newH1.textContent = "I like pizza!"; // 設定
+      newH1.id = "myH1";
+      newH1.style.color = "tomato";
+      newH1.style.textAlign = "center";
+
+      document.body.prepend(newH1); // 附加
+      document.getElementById("box1").append(newH1);
+
+      const insertBeforeH1 = document.createElement("h1");
+      const box2 = document.getElementById("box2");
+      insertBeforeH1.textContent = "insert before";
+      insertBeforeH1.id = "iB";
+      insertBeforeH1.style.color = "lightgreen";
+      document.body.insertBefore(insertBeforeH1, box2);
+      // 也可以用querySelectorAll來[]
+      const box22 = document.querySelectorAll(".box");
+      document.body.insertBefore(insertBeforeH1, box22[2]); // box3
+
+      //   document.body.removeChild(newH1); // 不可因為要從box1這個parent
+      document.getElementById("box1").removeChild(newH1);
+
+      const newListItem = document.createElement("li");
+      const banana = document.getElementById("banana");
+
+      newListItem.textContent = "coconut";
+      newListItem.id = "coconut";
+      newListItem.style.fontWeight = "bold";
+      newListItem.style.backgroundColor = "lightgreen";
+
+      //   document.getElementById("fruits").prepend(newListItem);
+      //   document.getElementById("fruits").insertBefore(newListItem, banana);
+
+      // 如果沒有id
+      const listItems = document.querySelectorAll("#fruits li");
+      document.getElementById("fruits").insertBefore(newListItem, listItems[1]);
+    </script>
+  </body>
+</html>

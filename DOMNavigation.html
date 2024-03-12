@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DOM navigation</title>
+  </head>
+  <body>
+    <ul id="fruits">
+      <li>apple</li>
+      <li>orange</li>
+      <li>banana</li>
+    </ul>
+    <ul id="vegetables">
+      <li id="carrots">carrots</li>
+      <li>onions</li>
+      <li>potatoes</li>
+    </ul>
+    <ul id="desserts">
+      <li>cake</li>
+      <li>pie</li>
+      <li id="ice-cream">ice cream</li>
+    </ul>
+
+    <ul id="test">
+      <li id="test1">test1</li>
+      <li>test2</li>
+      <li>test3</li>
+      <li>test4</li>
+    </ul>
+    <script>
+      const uls = document.querySelectorAll("ul"); // node list
+      //   console.log(uls);
+      uls.forEach((parameter) => {
+        parameter.firstElementChild.style.backgroundColor = "yellow";
+      });
+      uls.forEach((parameter) => {
+        parameter.lastElementChild.style.backgroundColor = "pink";
+      });
+
+      //   const lis = document.getElementById("fruits");
+      const carrots = document.getElementById("carrots");
+      carrots.nextElementSibling.style.backgroundColor = "lightgreen"; // li背景凌駕於ul所以會呈現T字背景色
+
+      const ice = document.getElementById("ice-cream");
+      ice.previousElementSibling.style.backgroundColor = "lightblue";
+
+      const test1 = document.getElementById("test1");
+      test1.parentElement.style.backgroundColor = "orange";
+
+      const test = document.getElementById("test");
+      test.children[3].style.backgroundColor = "lightgray"; // children也可以forEach
+    </script>
+  </body>
+</html>
