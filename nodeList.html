@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>node list</title>
+    <!-- Compiled and minified CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+    />
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <style>
+      #container {
+        width: 130px;
+      }
+      .waves-effect {
+        margin: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="container">
+      <a class="waves-effect waves-light btn-large">Button&nbsp;1</a>
+      <a class="waves-effect waves-light btn-large">Button&nbsp;2</a>
+      <a class="waves-effect waves-light btn-large">Button&nbsp;3</a>
+      <a class="waves-effect waves-light btn-large">Button&nbsp;4</a>
+    </div>
+
+    <script>
+      let buttons = document.querySelectorAll(".waves-effect");
+
+      //   buttons.forEach((element) => {
+      //     element.style.backgroundColor = "green";
+      //     element.textContent += "😁";
+
+      //     element.addEventListener("click", (event) => {
+      //       event.target.style.backgroundColor = "tomato";
+      //     });
+      //     element.addEventListener("mouseover", (event) => {
+      //       event.target.style.backgroundColor = "blue";
+      //     });
+      //     element.addEventListener("mouseout", (event) => {
+      //       event.target.style.backgroundColor = "lightblue";
+      //     });
+      //   });
+      const newButton = document.createElement("a");
+      newButton.textContent = "Button 5";
+      newButton.classList = "waves-effect waves-light btn-large";
+      document.body.append(newButton);
+      // className會覆蓋 classList會空一格新增上去 例如class="aaa"變成class="aaa newName"
+
+      buttons = document.querySelectorAll(".waves-effect");
+
+      //   console.log(buttons);
+
+      buttons.forEach((element) => {
+        // nodeList.forEach
+        element.addEventListener("click", (event) => {
+          // node.處發類事件監聽(觸發)
+          event.target.remove();
+          //   console.log(buttons); // 就算移除還是在 因為還沒重新讓buttons抓selectAll
+          buttons = document.querySelectorAll(".waves-effect");
+          console.log(buttons);
+        });
+      });
+    </script>
+  </body>
+</html>

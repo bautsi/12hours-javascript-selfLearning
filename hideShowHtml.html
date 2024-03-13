@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>hide/show html</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+    <style>
+      #myImage {
+        width: 400px;
+      }
+      #container {
+        width: 400px;
+      }
+    </style>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  </head>
+  <body>
+    <div id="container">
+      <img
+        src="https://www.carscoops.com/wp-content/uploads/2020/10/Cyberpunk2077_Porsche_911_00-1024x555.jpg"
+        alt="porsche 911"
+        id="myImage"
+      />
+      <a class="waves-effect waves-light btn-large" id="myButton">Hide</a>
+    </div>
+
+    <script>
+      const myButton = document.getElementById("myButton");
+      const myImage = document.getElementById("myImage");
+
+      myButton.addEventListener("click", (event) => {
+        myImage.style.display == "none" // 或可以用hidden 留空間
+          ? (myImage.style.display = "block")
+          : (myImage.style.display = "none");
+        myButton.textContent == "Show"
+          ? (myButton.textContent = "Hide")
+          : (myButton.textContent = "Show");
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>key events</title>
+    <style>
+      body {
+        margin: 0;
+      }
+      #myBox {
+        background-color: lightblue;
+        width: 200px;
+        height: 200px;
+        font-size: 7.5rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        user-select: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="myBox">😀</div>
+    <script>
+      //   document.addEventListener("keydown", (event) =>
+      //     console.log(`Key down = ${event.key}`)
+      //   );
+      //   document.addEventListener("keyup", (event) =>
+      //     console.log(`Key up = ${event.key}`)
+      //   );
+
+      const myBox = document.getElementById("myBox");
+
+      //   document.addEventListener("keydown", () => {
+      //     myBox.textContent = "😯";
+      //     myBox.style.backgroundColor = "tomato";
+      //   });
+      //   document.addEventListener("keyup", () => {
+      //     myBox.textContent = "😀";
+      //     myBox.style.backgroundColor = "lightblue";
+      //   });
+
+      const moveAmount = 10;
+      let x = 0;
+      let y = 0;
+
+      document.addEventListener("keydown", (event) => {
+        myBox.style.backgroundColor = "tomato";
+        myBox.textContent = "😯";
+        switch (event.key) {
+          case "w":
+            y -= moveAmount;
+            break;
+          case "s":
+            y += moveAmount;
+            break;
+          case "a":
+            x -= moveAmount;
+            break;
+          case "d":
+            x += moveAmount;
+            break;
+        }
+        document.addEventListener("keyup", (event) => {
+          myBox.style.backgroundColor = "lightblue";
+          myBox.textContent = "😀";
+        });
+
+        myBox.style.top = `${y}px`;
+        myBox.style.left = `${x}px`;
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>mouse events</title>
+    <style>
+      #myBox {
+        background-color: lightgreen;
+        width: 300px;
+        height: 300px;
+        font-size: 4.2rem;
+        font-weight: bold;
+        display: flex;
+        align-items: center;
+        text-align: center;
+        font-family: monospace;
+        user-select: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="myBox">Click Me 😀</div>
+    <script>
+      const myBox = document.getElementById("myBox");
+
+      myBox.addEventListener("click", (event) => {
+        getComputedStyle(event.target).backgroundColor ==
+          "rgb(144, 238, 144)" ||
+        getComputedStyle(event.target).backgroundColor == "rgb(255, 255, 0)" // 因為返回用來比較的背景色會用rgb 且直接用event.target無法獲取 要用getComputedStyle獲取
+          ? (event.target.style.backgroundColor = "tomato")
+          : (event.target.style.backgroundColor = "lightgreen");
+        event.target.textContent == "Click Me 😀" ||
+        event.target.textContent == "Don't do it 😯"
+          ? (event.target.textContent = "OUCH! 🤕")
+          : (event.target.textContent = "Click Me 😀");
+      });
+
+      myBox.addEventListener("mouseover", (event) => {
+        event.target.style.backgroundColor = "yellow";
+        event.target.textContent = "Don't do it 😯";
+      });
+      myBox.addEventListener("mouseout", (event) => {
+        event.target.style.backgroundColor = "lightgreen";
+        event.target.textContent = "Click Me 😀";
+      });
+    </script>
+  </body>
+</html>
