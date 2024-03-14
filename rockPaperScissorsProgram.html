@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>rock paper scissors</title>
+    <style>
+      body {
+        text-align: center;
+        font-family: sans-serif;
+      }
+      button {
+        margin: 5px;
+        padding: 0;
+        border: 1px solid;
+        border-radius: 50%;
+        height: 90px;
+        width: 90px;
+        font-size: 4rem;
+        background-color: #00a9ff;
+        text-align: center;
+        transition: background-color 0.5s ease;
+      }
+      button:hover {
+        background-color: #6ecbff;
+      }
+      #player {
+        margin-top: 5px;
+        margin-bottom: 0;
+      }
+      #computer {
+        margin: 0;
+      }
+      #result {
+        font-size: 3.5rem;
+        margin: 0;
+      }
+      #playerScore {
+        margin: 0;
+      }
+      #computerScore {
+        margin: 0;
+      }
+      #playerScoreNum {
+        color: #34ea5a;
+      }
+      #computerScoreNum {
+        color: #f2424c;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Rock - Paper - Scissors</h1>
+    <div id="buttons">
+      <button id="rock">✊</button>
+      <button id="paper">🤚</button>
+      <button id="scissors">✌️</button>
+    </div>
+    <h1 id="player">Player:</h1>
+    <h1 id="computer">Computer:</h1>
+    <h1 id="result">Result</h1>
+    <h3 id="playerScore">Player Score: <span id="playerScoreNum">0</span></h3>
+    <h3 id="computerScore">
+      Computer Score: <span id="computerScoreNum">0</span>
+    </h3>
+
+    <script>
+      const rock = document.getElementById("rock");
+      const paper = document.getElementById("paper");
+      const scissors = document.getElementById("scissors");
+      const buttons = document.querySelectorAll("button");
+      const player = document.getElementById("player");
+      const computer = document.getElementById("computer");
+      const result = document.getElementById("result");
+      const playerScore = document.getElementById("playerScoreNum");
+      const computerScore = document.getElementById("computerScoreNum");
+      let random;
+      let playerWhich;
+      let playerScoreNum = 0;
+      let computerScoreNum = 0;
+
+      buttons.forEach((element) => {
+        element.addEventListener("click", (event) => {
+          random = Math.floor(Math.random() * 3 + 1);
+          switch (random) {
+            case 1:
+              computer.textContent = "Computer: rock";
+              break;
+            case 2:
+              computer.textContent = "Computer: paper";
+              break;
+            case 3:
+              computer.textContent = "Computer: scissors";
+              break;
+          }
+        });
+      });
+      rock.onclick = () => {
+        player.textContent = "Player: rock";
+        playerWhich = 1;
+        if (random == playerWhich) {
+          result.textContent = "IT'S A TIE";
+          result.style.color = "black";
+        } else if (random == 3) {
+          result.textContent = "YOU WIN!";
+          result.style.color = "#34ea5a";
+          playerScoreNum++;
+          playerScore.textContent = playerScoreNum;
+        } else {
+          result.textContent = "YOU LOSE!";
+          result.style.color = "#f2424c";
+          computerScoreNum++;
+          computerScore.textContent = computerScoreNum;
+        }
+      };
+      paper.onclick = () => {
+        player.textContent = "Player: paper";
+        playerWhich = 2;
+        if (random == playerWhich) {
+          result.textContent = "IT'S A TIE";
+          result.style.color = "black";
+        } else if (random == 1) {
+          result.textContent = "YOU WIN!";
+          result.style.color = "#34ea5a";
+          playerScoreNum++;
+          playerScore.textContent = playerScoreNum;
+        } else {
+          result.textContent = "YOU LOSE!";
+          result.style.color = "#f2424c";
+          computerScoreNum++;
+          computerScore.textContent = computerScoreNum;
+        }
+      };
+      scissors.onclick = () => {
+        player.textContent = "Player: scissors";
+        playerWhich = 3;
+        if (random == playerWhich) {
+          result.textContent = "IT'S A TIE";
+          result.style.color = "black";
+        } else if (random == 2) {
+          result.textContent = "YOU WIN!";
+          result.style.color = "#34ea5a";
+          playerScoreNum++;
+          playerScore.textContent = playerScoreNum;
+        } else {
+          result.textContent = "YOU LOSE!";
+          result.style.color = "#f2424c";
+          computerScoreNum++;
+          computerScore.textContent = computerScoreNum;
+        }
+      };
+
+      // 小卡: 輸贏判斷
+      // 大卡: 勝輸場顯示顏色 ??
+
+      // 範例的就不重打 主要概念有switch跟classList
+    </script>
+  </body>
+</html>
