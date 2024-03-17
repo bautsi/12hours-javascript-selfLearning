@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>json files</title>
+  </head>
+  <body>
+    <script>
+      const names = ["Spongebob", "Patrick", "Squidward", "Sandy"];
+      console.log(names);
+      const jsonStringNames = JSON.stringify(names);
+      console.log(jsonStringNames);
+
+      const person = {
+        name: "Spongebobs",
+        age: 30,
+        isEmployed: true,
+        hobbies: ["Jellyfishing", "Karate", "Cooking"],
+      };
+      const jsonStringPerson = JSON.stringify(person);
+      console.log(jsonStringPerson);
+
+      const people = [
+        {
+          name: "Spongebob",
+          age: 30,
+          isEmployed: true,
+        },
+        {
+          name: "Patrick",
+          age: 34,
+          isEmployed: false,
+        },
+        {
+          name: "Squidward",
+          age: 50,
+          isEmployed: true,
+        },
+        {
+          name: "Sandy",
+          age: 27,
+          isEmployed: false,
+        },
+      ];
+      const jsonStringPeople = JSON.stringify(people);
+      console.log(jsonStringPeople);
+
+      const jsonNames = `["Spongebob", "Patrick", "Squidward", "Sandy"]`;
+      const jsonPerson = `{
+        name: "Spongebobs",
+        age: 30,
+        isEmployed: true,
+        hobbies: ["Jellyfishing", "Karate", "Cooking"],
+      }`;
+      const jsonPeople = `[
+        {
+          name: "Spongebob",
+          age: 30,
+          isEmployed: true,
+        },
+        {
+          name: "Patrick",
+          age: 34,
+          isEmployed: false,
+        },
+        {
+          name: "Squidward",
+          age: 50,
+          isEmployed: true,
+        },
+        {
+          name: "Sandy",
+          age: 27,
+          isEmployed: false,
+        },
+      ]`;
+
+      const parsedJsonNames = JSON.parse(jsonNames); // 獲取JSON文件通常是字串 會用parse轉成數組或物件
+      console.log(jsonNames);
+      console.log(parsedJsonNames);
+
+      fetch("person.json")
+        .then((response) => response.json())
+        // 這邊fetch後的響應包含整個HTTP響應的對象 例如狀態碼、頭部、主體之類的
+        // 所以跟JSON.stringify的概念布一樣 .json()是在解析主體內容成為js物件或數組且返回promise
+        // 所以才要用promise的.then處理然後.json()
+        .then((data) => {
+          const stringifyData = JSON.stringify(data);
+          // 可以再用stringify處理
+          console.log(stringifyData);
+        });
+
+      fetch("people.json")
+        .then((response) => response.json())
+        .then((datas) => datas.forEach((data) => console.log(data.isEmployed)))
+        .catch((error) => console.error(error));
+    </script>
+  </body>
+</html>
