@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>weather app project</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      #input {
+        margin: 15px;
+      }
+      input {
+        padding: 5px;
+        height: 20px;
+        font-size: 17px;
+        font-weight: bold;
+        border-radius: 5px;
+        border: 1px solid grey;
+      }
+      button {
+        height: 33px;
+        width: 120px;
+        font-size: 17px;
+        font-weight: bold;
+        color: white;
+        background-color: #54ae57;
+        border-radius: 5px;
+        border: 1px solid black;
+      }
+      button:hover {
+        transform: scale(1.03);
+      }
+      button:active {
+        transform: scale(0.97);
+      }
+      #card {
+        display: none;
+        width: 230px;
+        height: 300px;
+        margin-top: 5px;
+        border-radius: 10px;
+        text-align: center;
+        background: linear-gradient(
+          0deg,
+          hsl(40, 100%, 75%),
+          hsl(210, 100%, 75%)
+        );
+      }
+      #city {
+        margin-top: 30px;
+        margin-bottom: 15px;
+      }
+      #temp {
+        margin-top: 0;
+      }
+      #hum {
+        margin-bottom: 15px;
+      }
+      #stat {
+        margin: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <form id="input">
+      <input type="text" placeholder="Enter City" name="input" id="text" />
+      <button type="submit">Get Weather</button>
+    </form>
+    <div id="card">
+      <h1 id="city">City</h1>
+      <h1 id="temp">Temperature</h1>
+      <h4 id="hum">Humidity</h4>
+      <h3 id="stat"><i>status</i></h3>
+      <img src="" alt="icon" id="img" />
+    </div>
+    <script>
+      const apiKey = "";
+      const card = document.getElementById("card");
+      const cityName = document.getElementById("city");
+      const city = document.getElementById("text");
+      const temperature = document.getElementById("temp");
+      const humidity = document.getElementById("hum");
+      const description = document.getElementById("stat");
+      const icon = document.getElementById("img");
+
+      // document.getElementById("input").addEventListener("submit", (event) => {
+      //   event.preventDefault();
+
+      //   fetch(
+      //     `https://api.openweathermap.org/data/2.5/weather?q=${city.value}&appid=${apiKey}`
+      //   )
+      //     .then((response) => {
+      //       if (!response.ok) {
+      //         throw new Error("Response Error");
+      //       }
+      //       return response.json();
+      //     })
+      //     .then((data) => {
+      //       console.log(data);
+      //       card.style.display = "block";
+      //       cityName.textContent = data.name;
+      //       temperature.textContent = `${(data.main.temp - 273.15).toFixed(
+      //         1
+      //       )}°C`;
+      //       humidity.textContent = `Humidity: ${data.main.humidity}%`;
+      //       description.textContent = data.weather[0].description;
+      //       let id = data.weather[0].id;
+      //       let snum;
+      //       switch (id) {
+      //         case (200, 201, 202, 210, 211, 212, 221, 230, 231, 232):
+      //           snum = "11d";
+      //           break;
+
+      //         case (300,
+      //         301,
+      //         302,
+      //         310,
+      //         311,
+      //         312,
+      //         313,
+      //         314,
+      //         321,
+      //         520,
+      //         521,
+      //         522,
+      //         531):
+      //           snum = "09d";
+      //           break;
+
+      //         case (500, 501, 502, 503, 504):
+      //           snum = "10d";
+      //           break;
+
+      //         case (511, 600, 601, 602, 611, 612, 613, 615, 616, 620, 621, 622):
+      //           snum = "13d";
+      //           break;
+
+      //         case (701, 711, 721, 731, 741, 751, 761, 762, 771, 781):
+      //           snum = "50d";
+      //           break;
+
+      //         case 800:
+      //           snum = "01d";
+      //           break;
+
+      //         case 801:
+      //           snum = "02d";
+      //           break;
+
+      //         case 802:
+      //           snum = "03d";
+      //           break;
+
+      //         case (801, 804):
+      //           snum = "04d";
+      //           break;
+      //       }
+      //       icon.src = `https://openweathermap.org/img/wn/${snum}@2x.png`;
+      //     })
+      //     .catch((error) => {
+      //       console.error("Error: ", error);
+      //     });
+      // }); // 以上是自己做的 下面是改進
+
+      document
+        .getElementById("input")
+        .addEventListener("submit", async (event) => {
+          event.preventDefault();
+
+          try {
+            const data = await fetchWeatherData(city.value);
+            displayWeather(data);
+          } catch (error) {
+            console.error("Error: ", error);
+            displayError(error.message);
+          }
+        });
+
+      async function fetchWeatherData(city) {
+        const api = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`;
+
+        const response = await fetch(api);
+        if (!response.ok) {
+          throw new Error("Weather data not found. Please try another city.");
+        }
+        return await response.json();
+      }
+
+      function displayWeather(data) {
+        card.style.display = "block";
+        cityName.textContent = data.name;
+        temperature.textContent = `${(data.main.temp - 273.15).toFixed(1)}°C`;
+        humidity.textContent = `Humidity: ${data.main.humidity}%`;
+        description.textContent = data.weather[0].description;
+        let id = data.weather[0].id;
+        let snum;
+
+        switch (id) {
+          case (200, 201, 202, 210, 211, 212, 221, 230, 231, 232):
+            snum = "11d";
+            break;
+
+          case (300,
+          301,
+          302,
+          310,
+          311,
+          312,
+          313,
+          314,
+          321,
+          520,
+          521,
+          522,
+          531):
+            snum = "09d";
+            break;
+
+          case (500, 501, 502, 503, 504):
+            snum = "10d";
+            break;
+
+          case (511, 600, 601, 602, 611, 612, 613, 615, 616, 620, 621, 622):
+            snum = "13d";
+            break;
+
+          case (701, 711, 721, 731, 741, 751, 761, 762, 771, 781):
+            snum = "50d";
+            break;
+
+          case 800:
+            snum = "01d";
+            break;
+
+          case 801:
+            snum = "02d";
+            break;
+
+          case 802:
+            snum = "03d";
+            break;
+
+          case 803:
+            snum = "04d";
+            break;
+
+          case 804:
+            snum = "04d";
+            break;
+        }
+        icon.src = `https://openweathermap.org/img/wn/${snum}@2x.png`;
+      }
+
+      function displayError(message) {
+        card.textContent = "Error: " + message;
+        card.style.display = "block";
+      }
+
+      // 改動後懶得把計算function全部提出來 只改fetch async/await混用
+    </script>
+  </body>
+</html>
